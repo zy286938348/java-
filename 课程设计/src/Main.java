@@ -4,5 +4,6 @@ public class Main {
         System.out.println("puyakun");
         System.out.println("wshi ");
         System.out.println("asfaer");
+        System.out.println("刘金津");
     }
 }
