@@ -6,5 +6,6 @@ public class Main {
         System.out.println("asfaer");
         System.out.println("刘金津");
         System.out.println("111111");
+        System.out.println("shangchuanceshi");
     }
 }
