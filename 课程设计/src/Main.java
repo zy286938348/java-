@@ -5,5 +5,6 @@ public class Main {
         System.out.println("wshi ");
         System.out.println("asfaer");
         System.out.println("刘金津");
+        System.out.println("111111");
     }
 }
