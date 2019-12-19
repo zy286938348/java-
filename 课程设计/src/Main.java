@@ -7,8 +7,7 @@ public class Main {
         System.out.println("刘金津");
         System.out.println("111111");
         System.out.println("shangchuanceshi");
+        System.out.println("赵晋伍");
         System.out.println("人间正道是学习");
-        S
     }
 }
-0
