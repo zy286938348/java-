@@ -1,20 +1,20 @@
 package entity;
 
-public class Menu {
+public class Menus {
     private int id;
     private String userName;
     private String path;
     private String menuName;
     private double price;
 
-    public Menu(String userName, String path, String menuName, double price) {
+    public Menus(String userName, String path, String menuName, double price) {
         this.userName = userName;
         this.path = path;
         this.menuName = menuName;
         this.price = price;
     }
 
-    public Menu(int id, String userName, String path, String menuName, double price) {
+    public Menus(int id, String userName, String path, String menuName, double price) {
         this.id = id;
         this.userName = userName;
         this.path = path;
@@ -22,14 +22,14 @@ public class Menu {
         this.price = price;
     }
 
-    public Menu(int id, String path, String menuName, double price) {
+    public Menus(int id, String path, String menuName, double price) {
         this.id = id;
         this.path = path;
         this.menuName = menuName;
         this.price = price;
     }
 
-    public Menu() {
+    public Menus() {
     }
 
     public String getUserName() {
@@ -74,7 +74,7 @@ public class Menu {
 
     @Override
     public String toString() {
-        return "Menu{" +
+        return "Menus{" +
                 "id=" + id +
                 ", userName='" + userName + '\'' +
                 ", path='" + path + '\'' +

@@ -1,6 +1,6 @@
 package dao;
 
-import entity.Menu;
+import entity.Menus;
 
 import java.util.List;
 
@@ -10,21 +10,21 @@ public interface MenuDao {
      * @param userName
      * @return
      */
-    List<Menu> selectMenuByuserName(String userName);
+    List<Menus> selectMenuByuserName(String userName);
 
     /**
      * 用来实时更新菜谱信息
-     * @param menu
+     * @param menus
      * @return
      */
-    int updateMenu(Menu menu);
+    int updateMenu(Menus menus);
 
     /**
      * 添加菜
-     * @param menu
+     * @param menus
      * @return
      */
-    int insertMenu(Menu menu);
+    int insertMenu(Menus menus);
 
     /**
      * 商家可根据菜品id删除指定菜品

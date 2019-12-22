@@ -13,9 +13,4 @@ public interface UserDao {
     int insertUser(User user);
 
     int deleteUserByPrinaryKey(String username);
-
-
-
-
-
 }

@@ -1,7 +1,7 @@
 package dao.daoImpl;
 
 import dao.MenuDao;
-import entity.Menu;
+import entity.Menus;
 import until.JMysql;
 
 import java.sql.Connection;
@@ -16,21 +16,25 @@ import java.util.List;
  */
 public class MenuDaoImpl implements MenuDao {
     @Override
-    public List<Menu> selectMenuByuserName(String userName) {
+    public List<Menus> selectMenuByuserName(String userName) {
         Connection connection = JMysql.getConnection();
         String sql = "SELECT * FROM menu WHERE userName=?";
         PreparedStatement preparedStatement = JMysql.getPreparedStatement(connection,sql,userName);
         ResultSet resultSet = null;
-        Menu menu = null;
-        List<Menu> list = new ArrayList<>();
+        Menus menus = null;
+        List<Menus> list = new ArrayList<>();
         try {
             resultSet = preparedStatement.executeQuery();
-            while(resultSet.next()){
-                menu = new Menu(resultSet.getInt("id"),
-                        resultSet.getString("path"),
-                        resultSet.getString("menuName"),
-                        resultSet.getDouble("price"));
-                list.add(menu);
+            if (resultSet==null){
+                System.out.println("未查询到此人");
+            }else{
+                while(resultSet.next()){
+                    menus = new Menus(resultSet.getInt("id"),
+                            resultSet.getString("path"),
+                            resultSet.getString("menuName"),
+                            resultSet.getDouble("price"));
+                    list.add(menus);
+                }
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -40,18 +44,18 @@ public class MenuDaoImpl implements MenuDao {
 
     /**
      * 根据传入menu的id修改指定菜的信息
-     * @param menu
+     * @param menus
      * @return
      */
     @Override
-    public int updateMenu(Menu menu) {
+    public int updateMenu(Menus menus) {
         Connection connection = JMysql.getConnection();
         String sql = "UPDATE menu SET path = ? , menuName = ? , price = ? WHERE id = ?";
         int flag = 0;
-        PreparedStatement preparedStatement = JMysql.getPreparedStatement(connection,sql,menu.getPath(),
-                menu.getMenuName(),
-                menu.getPrice(),
-                menu.getId());
+        PreparedStatement preparedStatement = JMysql.getPreparedStatement(connection,sql, menus.getPath(),
+                menus.getMenuName(),
+                menus.getPrice(),
+                menus.getId());
         try {
             flag = preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -71,17 +75,17 @@ public class MenuDaoImpl implements MenuDao {
 
     /**
      * 增加菜品
-     * @param menu
+     * @param menus
      * @return
      */
     @Override
-    public int insertMenu(Menu menu) {
+    public int insertMenu(Menus menus) {
         Connection connection = JMysql.getConnection();
         String sql = " INSERT INTO menu(userName,path,menuName, price) VALUES(?,?,?,?)";
-        PreparedStatement preparedStatement = JMysql.getPreparedStatement(connection,sql,menu.getUserName(),
-                menu.getPath(),
-                menu.getMenuName(),
-                menu.getPrice());
+        PreparedStatement preparedStatement = JMysql.getPreparedStatement(connection,sql, menus.getUserName(),
+                menus.getPath(),
+                menus.getMenuName(),
+                menus.getPrice());
         int flag = 0;
         try {
             flag = preparedStatement.executeUpdate();

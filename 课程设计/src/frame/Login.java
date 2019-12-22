@@ -1,9 +1,9 @@
 package frame;
 
-import dao.UserDao;
-import dao.daoImpl.UserDaoImpl;
 import entity.User;
 import finals.Final;
+import service.UserService;
+import service.serviceImpl.UserServiceImpl;
 
 import javax.swing.*;
 import java.awt.*;
@@ -12,10 +12,10 @@ import java.awt.event.ActionListener;
 
 
 public class Login extends JFrame {
-    UserDao userdao= new UserDaoImpl();
+    UserService userService = new UserServiceImpl();
     String remmmenber="";
     public Login(){
-        setTitle("电商购物平台-登录-注册");
+        setTitle("XX点餐平台-登录-注册");
         setSize(900,600);
         setLocation(300,300);
         setResizable(false);
@@ -54,7 +54,7 @@ public class Login extends JFrame {
                 String password = String.valueOf(jt_2.getPassword());
                 String type = String.valueOf(jco_type.getSelectedItem());
                 //检查数据库中是否存在该用户的信息
-                User user = userdao.selectUserByUsernameAndPassword(username, password,type);
+                User user = userService.checkLogin(username, password,type);
                 if (user != null){
                     if (user.getName()==null){
                         dispose();
@@ -66,8 +66,9 @@ public class Login extends JFrame {
                             System.out.println("欢迎用户登录");
                         }else if (user.getType().equals("管理员")){
                             System.out.println("欢迎管理员登录");
-                        }else{
+                        }else if (user.getType().equals("商家")){
                             System.out.println("欢迎商家登录");
+                            new SelectMenu(user);
                         }
                     }
                 }else{
@@ -89,7 +90,7 @@ public class Login extends JFrame {
                 String password = String.valueOf(jt_2.getPassword());
                 String type = String.valueOf(jco_type.getSelectedItem());
 
-                Boolean flag = userdao.selectUserByUsername(username);
+                Boolean flag = userService.checkRegister(username);
                 User user = new User(username,password,type);
                 if (flag){
                     JOptionPane.showMessageDialog(null, "注册失败，该用户id已经存在！请重新输入！！！", "提示", JOptionPane.INFORMATION_MESSAGE);
@@ -100,7 +101,7 @@ public class Login extends JFrame {
                         JOptionPane.showMessageDialog(null, "密码格式错误！密码必须是6~12位字母数字构成！", "错误", JOptionPane.ERROR_MESSAGE);
                     }
                     else {
-                        userdao.insertUser(user);
+                        userService.insertUser(user);
                         dispose();
                         new Login();
                         JOptionPane.showMessageDialog(null, "注册成功，请登录！", "提示", JOptionPane.INFORMATION_MESSAGE);
