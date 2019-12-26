@@ -2,6 +2,8 @@ package service;
 
 import entity.User;
 
+import java.util.List;
+
 public interface UserService {
     /**
      * 检测登录
@@ -19,5 +21,29 @@ public interface UserService {
      */
     Boolean checkRegister(String username);
 
+    /**
+     * 增加用户
+     * @param user
+     */
     void insertUser(User user);
+
+    /**
+     * 获取该类型的User
+     * @param type
+     * @return
+     */
+    List<User> selectUserByType(String type);
+
+    /**
+     * 根据id删除指定user
+     * @param username
+     * @return
+     */
+    int deleteUserByUserName(String username);
+
+    /**
+     * 根据用户名查找user
+     */
+    String getPasswordByUsername(String username);
+
 }

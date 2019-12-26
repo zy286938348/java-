@@ -24,7 +24,7 @@ public class Login extends JFrame {
         setDefaultCloseOperation(3);//设置点击后直接关闭程序而不是隐藏
     }
 
-    public void init(){
+    private void init(){
         JLabel l_1 = new JLabel("登录账号：");
         l_1.setFont(new Font("楷体",Font.LAYOUT_NO_LIMIT_CONTEXT,35));
 
@@ -65,7 +65,7 @@ public class Login extends JFrame {
                         if (user.getType().equals("普通用户")){
                             System.out.println("欢迎用户登录");
                         }else if (user.getType().equals("管理员")){
-                            System.out.println("欢迎管理员登录");
+                            new Admin(user);
                         }else if (user.getType().equals("商家")){
                             System.out.println("欢迎商家登录");
                             new SelectMenu(user);

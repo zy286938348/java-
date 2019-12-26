@@ -9,6 +9,7 @@ public class User {
     private int age;
     private String sex;
     private String type;
+    private String data;
 
     public User(int id, String username, String name, String password, int age, String sex, String type) {
         this.id = id;
@@ -32,6 +33,15 @@ public class User {
 
     public User() {
 
+    }
+    //        "ID","用户名","姓名","性别","年龄","登录密码","注册时间"
+    public User(int id, String username, String name, String sex, int age, String data) {
+        this.id = id;
+        this.username = username;
+        this.name = name;
+        this.age = age;
+        this.sex = sex;
+        this.data = data;
     }
 
     public User(String username, String password, String type) {
@@ -94,6 +104,14 @@ public class User {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getData() {
+        return data;
+    }
+
+    public void setData(String data) {
+        this.data = data;
     }
 
     @Override

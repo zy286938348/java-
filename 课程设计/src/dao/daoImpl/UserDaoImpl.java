@@ -8,6 +8,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserDaoImpl implements UserDao {
     /**
@@ -140,7 +142,7 @@ public class UserDaoImpl implements UserDao {
      * @return
      */
     @Override
-    public int deleteUserByPrinaryKey(String username) {
+    public int deleteUserByUserName(String username) {
         Connection connection = JMysql.getConnection();
         String sql = "DELETE FROM user WHERE username = ?";
         PreparedStatement pstmt = JMysql.getPreparedStatement(connection, sql, username);
@@ -160,5 +162,52 @@ public class UserDaoImpl implements UserDao {
             }
         }
         return flag;
+    }
+
+    @Override
+    public List<User> selectMenuByType(String type) {
+
+        Connection connection = JMysql.getConnection();
+        String sql = "SELECT * FROM user WHERE type = ?";
+        PreparedStatement preparedStatement = JMysql.getPreparedStatement(connection,sql,type);
+        ResultSet resultSet = null;
+        User user = null;
+        List<User> userList = new ArrayList<>();
+
+        try {
+            resultSet = preparedStatement.executeQuery();
+//        "ID","用户名","姓名","性别","年龄","登录密码","注册时间"
+            while (resultSet.next()){
+//                String str = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(resultSet.getTimestamp("data"));
+                user = new User(resultSet.getInt("id"),
+                        resultSet.getString("username"),
+                        resultSet.getString("name"),
+                        resultSet.getString("sex"),
+                        resultSet.getInt("age"),
+                        resultSet.getTimestamp("data").toString());
+                userList.add(user);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return userList;
+    }
+
+    @Override
+    public String getPassword(String username) {
+        Connection connection = JMysql.getConnection();
+        String sql = "SELECT * FROM user WHERE username = ?";
+        PreparedStatement preparedStatement = JMysql.getPreparedStatement(connection,sql,username);
+        ResultSet resultSet = null;
+        String password = null;
+        try {
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                password = resultSet.getString("password");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return password;
     }
 }

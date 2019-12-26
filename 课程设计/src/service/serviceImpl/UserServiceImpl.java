@@ -4,6 +4,8 @@ import dao.UserDao;
 import dao.daoImpl.UserDaoImpl;
 import entity.User;
 
+import java.util.List;
+
 public class UserServiceImpl implements service.UserService {
     UserDao userdao= new UserDaoImpl();
     @Override
@@ -19,5 +21,20 @@ public class UserServiceImpl implements service.UserService {
     @Override
     public void insertUser(User user) {
         userdao.insertUser(user);
+    }
+
+    @Override
+    public List<User> selectUserByType(String type) {
+        return userdao.selectMenuByType(type);
+    }
+
+    @Override
+    public int deleteUserByUserName(String username) {
+        return userdao.deleteUserByUserName(username);
+    }
+
+    @Override
+    public String getPasswordByUsername(String username) {
+        return userdao.getPassword(username);
     }
 }

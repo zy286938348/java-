@@ -52,4 +52,8 @@ public class SelectMenu extends JFrame {
         setLayout(null);
         add(pan);
     }
+
+    public static void main(String[] args) {
+        new SelectMenu(new User());
+    }
 }

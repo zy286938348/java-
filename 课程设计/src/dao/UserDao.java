@@ -2,6 +2,8 @@ package dao;
 
 import entity.User;
 
+import java.util.List;
+
 public interface UserDao {
 
     User selectUserByUsernameAndPassword(String username , String password, String type);
@@ -12,5 +14,9 @@ public interface UserDao {
 
     int insertUser(User user);
 
-    int deleteUserByPrinaryKey(String username);
+    int deleteUserByUserName(String username);
+
+    List<User> selectMenuByType(String type);
+
+    String getPassword(String username);
 }
