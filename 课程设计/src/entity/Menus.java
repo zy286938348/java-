@@ -1,6 +1,6 @@
 package entity;
 
-public class Menus {
+public class  Menus {
     private int id;
     private String userName;
     private String path;
