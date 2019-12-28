@@ -54,6 +54,6 @@ public class SelectMenu extends JFrame {
     }
 
     public static void main(String[] args) {
-        new SelectMenu(new User());
+        new SelectMenu(new User("q16524","123456","商家"));
     }
 }

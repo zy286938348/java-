@@ -68,7 +68,7 @@ public class Login extends JFrame {
                             new Admin(user);
                         }else if (user.getType().equals("商家")){
                             System.out.println("欢迎商家登录");
-                            new SelectMenu(user);
+                            new Business(user,false);
                         }
                     }
                 }else{
