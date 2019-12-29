@@ -1,8 +1,8 @@
 package frame;
-import dao.MenuDao;
-import dao.daoImpl.MenuDaoImpl;
 import entity.Menus;
 import entity.User;
+import service.MenuService;
+import service.serviceImpl.MenuServiceImpl;
 import until.IconModel;
 import until.PictureUtil;
 
@@ -15,11 +15,10 @@ import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import java.util.*;
 import java.util.List;
 public class Business {
 //    UserService userService = new UserServiceImpl();
-    MenuDao menuDao = new MenuDaoImpl();
+    MenuService menuService = new MenuServiceImpl();
 
     TableColumnModel tableColumnMode;
 
@@ -74,7 +73,7 @@ public class Business {
     }
 
     private void init(JPanel jPanel,User user,JFrame jf){
-        List<Menus> menusList = menuDao.selectMenuByuserName(user.getUsername());
+        List<Menus> menusList = menuService.selectMenuByuserName(user.getUsername());
         Object [][] Data = new Object[menusList.size()][4];
         Object [] DataTitle = {"ID","菜名","菜品图片","价格"};
         for (int i = 0; i < menusList.size(); i++) {
@@ -140,7 +139,7 @@ public class Business {
                     System.out.println("未选择中");
                 }else{
                     int id  = (Integer) j.getValueAt(row,0);
-                    int flag = menuDao.deleteUserByPrinaryKey(id);
+                    int flag = menuService.deleteUserByPrinaryKey(id);
                     jf.dispose();
                     new Business(user,true);
                     if (flag==1){
@@ -203,7 +202,7 @@ public class Business {
                 String str3 = jTextField3.getText();
                 String str4 = user.getUsername();
                 Menus menu = new Menus(str4,str2,str1,Integer.valueOf(str3));
-                menuDao.insertMenu(menu);
+                menuService.insertMenu(menu);
                 jf.dispose();
                 new Business(user,true);
             }
