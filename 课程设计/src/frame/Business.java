@@ -17,7 +17,6 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.util.List;
 public class Business {
-//    UserService userService = new UserServiceImpl();
     MenuService menuService = new MenuServiceImpl();
 
     TableColumnModel tableColumnMode;
@@ -101,9 +100,9 @@ public class Business {
         };
         JTable j = new JTable(defaultTableModel);
 
-          j.setRowHeight(100);
-          j.getTableHeader().setFont(new Font("黑体",Font.PLAIN,30));
-          j.setFont(new Font("黑体",Font.PLAIN,23));
+        j.setRowHeight(100);
+        j.getTableHeader().setFont(new Font("黑体",Font.PLAIN,30));
+        j.setFont(new Font("黑体",Font.PLAIN,23));
 
         JScrollPane js = new JScrollPane(j);
         js.setBounds(150,0,550,500);

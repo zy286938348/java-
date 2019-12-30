@@ -17,8 +17,6 @@ public class ShoppingCart extends JFrame{
         JScrollPane scrollPane = new JScrollPane(table);
         scrollPane.setBounds(0,0,700,300);
         add(scrollPane);
-        //scrollPane.setVisible(true);
-        //add(scrollPane, BorderLayout.CENTER);
     }
 
     public ShoppingCart(){

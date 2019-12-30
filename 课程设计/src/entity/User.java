@@ -3,6 +3,7 @@ package entity;
 public class User {
 
     private int id;
+    private String path;
     private String username;
     private String name;
     private String password;
@@ -21,20 +22,9 @@ public class User {
         this.type = type;
     }
 
-
-    public User(String username, String name, String password, int age, String sex, String type) {
-        this.username = username;
-        this.name = name;
-        this.password = password;
-        this.age = age;
-        this.sex = sex;
-        this.type = type;
-    }
-
     public User() {
 
     }
-    //        "ID","用户名","姓名","性别","年龄","登录密码","注册时间"
     public User(int id, String username, String name, String sex, int age, String data) {
         this.id = id;
         this.username = username;
@@ -48,6 +38,16 @@ public class User {
         this.username = username;
         this.password = password;
         this.type = type;
+    }
+
+    public User(int id, String path, String username, String name, String sex, int age, String data) {
+        this.id = id;
+        this.path = path;
+        this.username = username;
+        this.name = name;
+        this.age = age;
+        this.sex = sex;
+        this.data = data;
     }
 
     public int getId() {
@@ -113,17 +113,26 @@ public class User {
     public void setData(String data) {
         this.data = data;
     }
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
 
     @Override
     public String toString() {
         return "User{" +
                 "id=" + id +
+                ", path='" + path + '\'' +
                 ", username='" + username + '\'' +
                 ", name='" + name + '\'' +
                 ", password='" + password + '\'' +
                 ", age=" + age +
                 ", sex='" + sex + '\'' +
                 ", type='" + type + '\'' +
+                ", data='" + data + '\'' +
                 '}';
     }
 }

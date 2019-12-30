@@ -176,10 +176,9 @@ public class UserDaoImpl implements UserDao {
 
         try {
             resultSet = preparedStatement.executeQuery();
-//        "ID","用户名","姓名","性别","年龄","登录密码","注册时间"
             while (resultSet.next()){
-//                String str = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(resultSet.getTimestamp("data"));
                 user = new User(resultSet.getInt("id"),
+                        resultSet.getString("path"),
                         resultSet.getString("username"),
                         resultSet.getString("name"),
                         resultSet.getString("sex"),

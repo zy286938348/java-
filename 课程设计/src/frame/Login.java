@@ -4,6 +4,7 @@ import entity.User;
 import finals.Final;
 import service.UserService;
 import service.serviceImpl.UserServiceImpl;
+import until.PictureUtil;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,7 +14,6 @@ import java.awt.event.ActionListener;
 
 public class Login extends JFrame {
     UserService userService = new UserServiceImpl();
-    String remmmenber="";
     public Login(){
         setTitle("XX点餐平台-登录-注册");
         setSize(900,600);
@@ -28,7 +28,7 @@ public class Login extends JFrame {
         JLabel l_1 = new JLabel("登录账号：");
         l_1.setFont(new Font("楷体",Font.LAYOUT_NO_LIMIT_CONTEXT,35));
 
-        JTextField jt_1 = new JTextField(remmmenber,20);
+        JTextField jt_1 = new JTextField(20);
         jt_1.setFont(new Font("楷体",Font.PLAIN,30));
 
         JLabel l_3 = new JLabel("用户类型：");
@@ -56,20 +56,23 @@ public class Login extends JFrame {
                 //检查数据库中是否存在该用户的信息
                 User user = userService.checkLogin(username, password,type);
                 if (user != null){
+                    System.out.println(user.toString());
                     if (user.getName()==null){
                         dispose();
-//                        JOptionPane.showMessageDialog(null, "请点击右上角完善个人信息", "提示", JOptionPane.ERROR_MESSAGE);
                         System.out.println("请完善个人信息");
                     }else{
-                        dispose();
-                        if (user.getType().equals("普通用户")){
-                            System.out.println("欢迎用户登录");
+                        System.out.println("2");
+                        if (user==null){
+                            System.out.println("输入错误");
+                            System.out.println();
                         }else if (user.getType().equals("管理员")){
                             new Admin(user);
                         }else if (user.getType().equals("商家")){
-                            System.out.println("欢迎商家登录");
                             new Business(user,false);
+                        }else if (user.getType().equals("客户")){
+                            new UserFrame(user);
                         }
+                        dispose();
                     }
                 }else{
                     //创建一个 JOptionPane的实例以显示具有指定消息类型，选项和图标的消息。

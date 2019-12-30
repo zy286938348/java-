@@ -46,4 +46,6 @@ public interface UserService {
      */
     String getPasswordByUsername(String username);
 
+    List<User> selectMenuByType(String type);
+
 }
