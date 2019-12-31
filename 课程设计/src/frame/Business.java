@@ -343,6 +343,7 @@ public class Business {
          */
         tableColumnMode = jj.getColumnModel();
         tableColumn =tableColumnMode.getColumn(3);
+
         tableColumn.setPreferredWidth(250);
         JLabel jLabel = new JLabel("今日总收入");
         jLabel.setFont(new Font("黑体",Font.LAYOUT_NO_LIMIT_CONTEXT,20));
