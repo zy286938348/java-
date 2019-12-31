@@ -36,7 +36,7 @@ public class Shopping extends JFrame {
         setResizable(false);
         init(username1,user);
         setVisible(true);
-        setDefaultCloseOperation(3);//设置点击后直接关闭程序而不是隐藏
+     //   setDefaultCloseOperation(3);//设置点击后直接关闭程序而不是隐藏   // 商家界面不关闭
     }
     private void init(String username1,User user){
         List<Menus> menusList = menuService.selectMenuByuserName(username1);
@@ -72,7 +72,7 @@ public class Shopping extends JFrame {
         j.setFont(new Font("黑体",Font.PLAIN,23));
 
         JScrollPane js = new JScrollPane(j);
-        js.setBounds(100,20,650,500);
+        js.setBounds(95,20,650,500);
 
         /**
          * 设置注册时间列的列宽
@@ -93,12 +93,12 @@ public class Shopping extends JFrame {
 
         JButton jButton = new JButton("加入购物车");
         jButton.setFont(new Font("黑体",Font.PLAIN,25));
-        jButton.setBounds(510,530,200,40);
+        jButton.setBounds(540,535,200,40);
         add(jButton);
 
         JButton jButton1 = new JButton("查看购物车");
         jButton1.setFont(new Font("黑体",Font.PLAIN,25));
-        jButton1.setBounds(510,590,200,40);
+        jButton1.setBounds(540,605,200,40);
         add(jButton1);
 
         JLabel jLabel = new JLabel("数量：");
@@ -149,7 +149,4 @@ public class Shopping extends JFrame {
         });
     }
 
-    public static void main(String[] args) {
-        new Shopping(new User("q12345","456asd","商家"),"asd56");
-    }
 }

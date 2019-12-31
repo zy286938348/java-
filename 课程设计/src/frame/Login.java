@@ -17,7 +17,7 @@ public class Login extends JFrame {
     public Login(){
         setTitle("XX点餐平台-登录-注册");
         setSize(900,600);
-        setLocation(300,300);
+        setLocation(300,200);
         setResizable(false);
         init();
         setVisible(true);
@@ -42,7 +42,7 @@ public class Login extends JFrame {
         JPasswordField jt_2 = new JPasswordField(20);
 
         JButton btn_1 = new JButton("登录");
-        btn_1.setFont(new Font("楷体",Font.PLAIN,20));
+        btn_1.setFont(new Font("楷体",Font.PLAIN,35));
         /**
          * 登录事件
          */
@@ -84,7 +84,7 @@ public class Login extends JFrame {
          * 注册
          */
         JButton btn_3 = new JButton("注册");
-        btn_3.setFont(new Font("楷体",Font.PLAIN,20));
+        btn_3.setFont(new Font("楷体",Font.PLAIN,35));
 
         btn_3.addActionListener(new ActionListener() {
             @Override

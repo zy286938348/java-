@@ -19,7 +19,7 @@ public interface ShoppingDao {
      * @param id
      * @return
      */
-    int delet(int id);
+    int deleteById(int id);
 
     /***
      * 把购物车中的信息返回到数据库
@@ -27,6 +27,13 @@ public interface ShoppingDao {
      * @return
      */
     int insert(Shopping shopping);
+
+    /**
+     * 根据用户名清空购物车
+     * @param username
+     * @return
+     */
+    int deleteAll(String username);
 
 
 }

@@ -53,7 +53,7 @@ public class SelectMenu extends JFrame {
         add(pan);
     }
 
-    public static void main(String[] args) {
-        new SelectMenu(new User("q16524","123456","商家"));
-    }
+//    public static void main(String[] args) {
+//        new SelectMenu(new User("q16524","123456","商家"));
+//    }
 }

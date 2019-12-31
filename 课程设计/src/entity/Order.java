@@ -49,7 +49,16 @@ public class Order {
         this.num = num;
     }
 
-//    public Order(String username, String merchant, String menuName) {
+//    public Order(String username, String merchant, String menuName, double price, int num, double sum) {
+//        this.username = username;
+//        this.merchant = merchant;
+//        this.menuName = menuName;
+//        this.price = price;
+//        this.num = num;
+//        this.sum = sum;
+//    }
+
+    //    public Order(String username, String merchant, String menuName) {
 //        this.username = username;
 //        this.merchant = merchant;
 //        this.menuName = menuName;

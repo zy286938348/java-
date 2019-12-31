@@ -60,7 +60,7 @@ public class UserFrame extends JFrame {
         ta.setRowHeight(80);
         pan = new JScrollPane();
         pan.getViewport().add(ta);
-        pan.setBounds(30, 10, 700,450);
+        pan.setBounds(70, 25, 700,450);
 
 //        ta.setRowHeight(100);
         ta.getTableHeader().setFont(new Font("黑体",Font.PLAIN,30));

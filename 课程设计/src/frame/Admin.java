@@ -26,7 +26,7 @@ public class Admin extends JFrame {
     public Admin(User u) {
         setTitle("欢迎"+u.getName()+"管理员");
         setSize(1730,900);
-        setLocation(50,50);
+        setLocation(0,0);
         lable();
         init1(u);
         init2(u);
@@ -50,7 +50,7 @@ public class Admin extends JFrame {
         jLabel4.setFont(new Font("黑体",Font.LAYOUT_NO_LIMIT_CONTEXT,35));
 
         jLabel1.setBounds(30,50,200,50);
-        jLabel2.setBounds(850,50,200,50);
+        jLabel2.setBounds(775,50,200,50);
         jLabel3.setBounds(250,750,200,50);
         jLabel4.setBounds(750,750,300,50);
 
@@ -160,14 +160,15 @@ public class Admin extends JFrame {
         tableColumn =tableColumnModel.getColumn(5);
         tableColumn.setPreferredWidth(300);
 
+
         jScrollPane = new JScrollPane();
         jScrollPane.getViewport().add(jTable);
-        jScrollPane.setBounds(40,130,800,500);
+        jScrollPane.setBounds(30,130,730,500);
         add(jScrollPane);
 
         JButton jButton = new JButton("删除");
         jButton.setFont(new Font("黑体",Font.LAYOUT_NO_LIMIT_CONTEXT,35));
-        jButton.setBounds(690,650,150,50);
+        jButton.setBounds(590,650,150,50);
 
         jButton.addActionListener(new ActionListener() {
             @Override
@@ -259,12 +260,12 @@ public class Admin extends JFrame {
 
         jScrollPane2 = new JScrollPane();
         jScrollPane2.getViewport().add(jTable2);
-        jScrollPane2.setBounds(860,130,800,500);
+        jScrollPane2.setBounds(775,130,730,500);
         add(jScrollPane2);
 
         JButton jButton2 = new JButton("删除");
         jButton2.setFont(new Font("黑体",Font.LAYOUT_NO_LIMIT_CONTEXT,35));
-        jButton2.setBounds(1510,650,150,50);
+        jButton2.setBounds(1340,650,150,50);
 
         jButton2.addActionListener(new ActionListener() {
             @Override

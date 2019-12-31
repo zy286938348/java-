@@ -25,7 +25,7 @@ public class OrderDaoImpl implements OrderDao {
             resultSet = preparedStatement.executeQuery();
             while(resultSet.next()){
                 order = new Order(resultSet.getInt("id"),
-                        resultSet.getString("merchant"),
+                        resultSet.getString("userName"),
                         resultSet.getString("menuName"),
                         resultSet.getDouble("price"),
                         resultSet.getInt("num"),
@@ -40,7 +40,7 @@ public class OrderDaoImpl implements OrderDao {
     }
 
     @Override
-    public int deletOrder(int id) {
+    public int deleteOrder(int id) {
         Connection connection = JMysql.getConnection();
         String sql = "DELETE FROM orders WHERE id = ?";
         PreparedStatement preparedStatement = JMysql.getPreparedStatement(connection,sql,id);

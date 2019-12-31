@@ -31,6 +31,7 @@ public class ShoppingDaolmpl implements ShoppingDao {
             }else{
                 while(resultSet.next()){
                     shopping  =new Shopping(
+                            resultSet.getInt("id"),
                             resultSet.getString("sUsername"),
                             resultSet.getString("menuName"),
                             resultSet.getDouble("price"),
@@ -47,8 +48,27 @@ public class ShoppingDaolmpl implements ShoppingDao {
     }
 
     @Override
-    public int delet(int id) {
-        return 0;
+    public int deleteById(int id) {
+        Connection connection = JMysql.getConnection();
+        String sql = "DELETE FROM shopping WHERE id = ?";
+        PreparedStatement preparedStatement = JMysql.getPreparedStatement(connection,sql,id);
+        int flag = 0;
+        try {
+            flag = preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            JMysql.closeConnection(connection);
+            if (preparedStatement != null){
+                try {
+                    preparedStatement.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return flag;
+
     }
 
     @Override
@@ -62,6 +82,29 @@ public class ShoppingDaolmpl implements ShoppingDao {
                 shopping.getNum(),
                 shopping.getSum());
         int flag = 0 ;
+        try {
+            flag = preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            JMysql.closeConnection(connection);
+            if (preparedStatement != null){
+                try {
+                    preparedStatement.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return flag;
+    }
+
+    @Override
+    public int deleteAll(String username) {
+        Connection connection = JMysql.getConnection();
+        String sql = "DELETE FROM shopping WHERE username = ?";
+        PreparedStatement preparedStatement = JMysql.getPreparedStatement(connection,sql,username);
+        int flag = 0;
         try {
             flag = preparedStatement.executeUpdate();
         } catch (SQLException e) {

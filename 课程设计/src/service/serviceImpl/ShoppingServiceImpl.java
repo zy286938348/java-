@@ -13,4 +13,14 @@ public class ShoppingServiceImpl implements ShoppingService {
     public List<Shopping> selectShoppingByuserName(String username) {
         return shoppingDao.shoppingList(username);
     }
+
+    @Override
+    public int deleteById(int id) {
+        return shoppingDao.deleteById(id);
+    }
+
+    @Override
+    public int deleteAll(String username) {
+        return shoppingDao.deleteAll(username);
+    }
 }

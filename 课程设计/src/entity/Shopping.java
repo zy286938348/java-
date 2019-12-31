@@ -19,6 +19,15 @@ public class Shopping {
         this.sum = sum;
     }
 
+    public Shopping(int id, String sUsername, String menuName, double price, double num, double sum) {
+        this.id = id;
+        this.sUsername = sUsername;
+        this.menuName = menuName;
+        this.price = price;
+        this.num = num;
+        this.sum = sum;
+    }
+
     public Shopping(String username, String sUsername, String menuName, double price, double num, double sum) {
         this.username = username;
         this.sUsername = sUsername;

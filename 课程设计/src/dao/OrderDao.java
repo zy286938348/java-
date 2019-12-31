@@ -17,7 +17,7 @@ public interface OrderDao {
      * @param id
      * @return
      */
-    int deletOrder (int id);
+    int deleteOrder (int id);
 
     /**
      * 根据客户名称添加订单信息

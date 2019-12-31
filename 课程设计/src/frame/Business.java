@@ -49,15 +49,15 @@ public class Business {
 
 
 
-        jf.add(button1).setBounds(0,0,130,100);
-        jf.add(button2).setBounds(0,100,130,100);
-        jf.add(button3).setBounds(0,200,130,100);
+        jf.add(button1).setBounds(20,30,150,100);
+        jf.add(button2).setBounds(20,160,150,100);
+        jf.add(button3).setBounds(20,290,150,100);
 
 
 
-        button1.setFont(new Font("黑体",Font.PLAIN,20));
-        button2.setFont(new Font("黑体",Font.PLAIN,20));
-        button3.setFont(new Font("黑体",Font.PLAIN,20));
+        button1.setFont(new Font("黑体",Font.PLAIN,25));
+        button2.setFont(new Font("黑体",Font.PLAIN,25));
+        button3.setFont(new Font("黑体",Font.PLAIN,25));
 
 
 
@@ -144,7 +144,7 @@ public class Business {
         j.setFont(new Font("黑体",Font.PLAIN,23));
 
         JScrollPane js = new JScrollPane(j);
-        js.setBounds(150,0,550,500);
+        js.setBounds(200,10,550,480);
 
         /**
          * 设置注册时间列的列宽
@@ -168,7 +168,8 @@ public class Business {
         j.getTableHeader().setReorderingAllowed(false);
 
         JButton button3 = new JButton("删除");
-        jPanel.add(button3).setBounds(550,500,100,50);
+        button3.setFont(new Font("黑体",Font.PLAIN,25));
+        jPanel.add(button3).setBounds(540,500,200,50);
         button3.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
@@ -198,9 +199,9 @@ public class Business {
         jLabel3.setFont(new Font("黑体",Font.LAYOUT_NO_LIMIT_CONTEXT,30));
         jLabel4.setFont(new Font("黑体",Font.LAYOUT_NO_LIMIT_CONTEXT,30));
 
-        jLabel2.setBounds(720,50,250,50);
-        jLabel3.setBounds(720,150,250,50);
-        jLabel4.setBounds(720,250,250,50);
+        jLabel2.setBounds(800,100,250,50);
+        jLabel3.setBounds(800,200,250,50);
+        jLabel4.setBounds(800,300,250,50);
 
         jPanel.add(jLabel2);
         jPanel.add(jLabel3);
@@ -214,23 +215,17 @@ public class Business {
         jTextField2.setFont(new Font("黑体",Font.LAYOUT_NO_LIMIT_CONTEXT,35));
         jTextField3.setFont(new Font("黑体",Font.LAYOUT_NO_LIMIT_CONTEXT,35));
 
-        jTextField1.setBounds(900,50,210,50);
-        jTextField2.setBounds(900,150,210,50);
-        jTextField3.setBounds(900,250,210,50);
+        jTextField1.setBounds(960,100,210,50);
+        jTextField2.setBounds(960,200,210,50);
+        jTextField3.setBounds(960,300,210,50);
 
         jPanel.add(jTextField1);
         jPanel.add(jTextField2);
         jPanel.add(jTextField3);
-//
-
-
-
-
-
-
 
         JButton button2 = new JButton("添加");
-        jPanel.add(button2).setBounds(1000,500,100,50);
+        button2.setFont(new Font("黑体",Font.LAYOUT_NO_LIMIT_CONTEXT,25));
+        jPanel.add(button2).setBounds(965,500,200,50);
 
         button2.addActionListener(new ActionListener() {
             @Override
@@ -279,12 +274,12 @@ public class Business {
             }
         }
         JTable jj = new JTable(Data,DataTitle);
-        jj.setRowHeight(150);
+        jj.setRowHeight(50);
         jj.getTableHeader().setFont(new Font("黑体",Font.PLAIN,30));
         jj.setFont(new Font("黑体",Font.PLAIN,23));
 
         JScrollPane jss = new JScrollPane(jj);
-        jss.setBounds(150,0,900,500);
+        jss.setBounds(260,30,900,500);
 
         /**
          * 设置注册时间列的列宽
@@ -335,8 +330,11 @@ public class Business {
         jj.getTableHeader().setFont(new Font("黑体",Font.PLAIN,30));
         jj.setFont(new Font("黑体",Font.PLAIN,23));
 
+        DefaultTableCellRenderer r = new  DefaultTableCellRenderer();
+        r.setHorizontalAlignment(SwingConstants.CENTER);
+        jj.setDefaultRenderer(Object.class,r);
         JScrollPane jss = new JScrollPane(jj);
-        jss.setBounds(150,0,600,400);
+        jss.setBounds(260,30,900,500);
 
         /**
          * 设置注册时间列的列宽
@@ -345,9 +343,9 @@ public class Business {
         tableColumn =tableColumnMode.getColumn(3);
 
         tableColumn.setPreferredWidth(250);
-        JLabel jLabel = new JLabel("今日总收入");
-        jLabel.setFont(new Font("黑体",Font.LAYOUT_NO_LIMIT_CONTEXT,20));
-        jLabel.setBounds(760,450,200,50);
+        JLabel jLabel = new JLabel("今日总收入:");
+        jLabel.setFont(new Font("黑体",Font.LAYOUT_NO_LIMIT_CONTEXT,25));
+        jLabel.setBounds(860,525,200,50);
         double price1 = 0;
         double[]priceArray = new double[orderList.size()];
         for (int i = 0; i < orderList.size(); i++) {
@@ -355,17 +353,10 @@ public class Business {
                         price1 = price1 +priceArray[i];
         }
         JLabel jLabel1 = new JLabel(price1 + "");
-        jLabel1.setFont(new Font("黑体",Font.LAYOUT_NO_LIMIT_CONTEXT,20));
-        jLabel1.setBounds(900,450,100,50);
+        jLabel1.setFont(new Font("黑体",Font.LAYOUT_NO_LIMIT_CONTEXT,25));
+        jLabel1.setBounds(1000,525,100,50);
         jPanel.add(jss);
         jPanel.add(jLabel);
         jPanel.add(jLabel1);
-
-
     }
-
-//
-//    public static void main(String[] args) {
-//        new Business(new User(),false);
-//    }
 }
