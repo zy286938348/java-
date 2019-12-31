@@ -37,4 +37,9 @@ public class UserServiceImpl implements service.UserService {
     public String getPasswordByUsername(String username) {
         return userdao.getPassword(username);
     }
+
+    @Override
+    public List<User> selectMenuByType(String type) {
+        return userdao.selectMenuByType(type);
+    }
 }

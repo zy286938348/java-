@@ -19,4 +19,6 @@ public interface UserDao {
     List<User> selectMenuByType(String type);
 
     String getPassword(String username);
+
+//    List<User> getUserByType(String type);
 }
