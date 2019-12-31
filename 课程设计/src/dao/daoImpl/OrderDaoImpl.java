@@ -18,7 +18,7 @@ public class OrderDaoImpl implements OrderDao {
         List<Order> orderList = new ArrayList<>();
 
         Connection connection = JMysql.getConnection();
-        String sql = "SELECT * FROM orders WHERE userName = ?";
+        String sql = "SELECT * FROM orders WHERE merchant = ?";
         PreparedStatement preparedStatement = JMysql.getPreparedStatement(connection,sql,username);
         ResultSet resultSet = null;
         try {

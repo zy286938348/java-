@@ -31,9 +31,9 @@ public class Order {
         this.datatime = datatime;
     }
 
-    public Order(int id, String merchant, String menuName, double price, int num, double sum, String datatime) {
+    public Order(int id, String username, String menuName, double price, int num, double sum, String datatime) {
         this.id = id;
-        this.merchant = merchant;
+        this.username = username;
         this.menuName = menuName;
         this.price = price;
         this.num = num;
@@ -49,10 +49,16 @@ public class Order {
         this.num = num;
     }
 
-    public Order(String username, String merchant, String menuName) {
-        this.username = username;
-        this.merchant = merchant;
+//    public Order(String username, String merchant, String menuName) {
+//        this.username = username;
+//        this.merchant = merchant;
+//        this.menuName = menuName;
+//    }
+    public Order(String username,String menuName,double price,String datatime){
         this.menuName = menuName;
+        this.username = username;
+        this.price = price;
+        this.datatime = datatime;
     }
 
     public int getId() {
