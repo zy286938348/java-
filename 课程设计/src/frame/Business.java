@@ -4,7 +4,9 @@ import entity.Menus;
 import entity.Order;
 import entity.User;
 import service.MenuService;
+import service.UserService;
 import service.serviceImpl.MenuServiceImpl;
+import service.serviceImpl.UserServiceImpl;
 import until.IconModel;
 import until.PictureUtil;
 
@@ -19,6 +21,7 @@ import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import java.util.List;
 public class Business {
+    UserService userService = new UserServiceImpl();
     MenuService menuService = new MenuServiceImpl();
     OrderDaoImpl orderDao = new OrderDaoImpl();
 
@@ -374,6 +377,7 @@ public class Business {
 
         jTextField1.setBounds(200,100,900,300);
         jTextField1.setHorizontalAlignment(JTextField.LEADING);
+        jTextField1.setText(userService.getTextByUsername(user.getUsername()));
 
         JButton jButton = new JButton("发布");
 
@@ -387,7 +391,7 @@ public class Business {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 String str = jTextField1.getText();
-
+                userService.setTextUsername(user.getUsername(),str);
             }
         });
 
