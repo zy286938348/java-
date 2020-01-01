@@ -42,4 +42,14 @@ public class UserServiceImpl implements service.UserService {
     public List<User> selectMenuByType(String type) {
         return userdao.selectMenuByType(type);
     }
+
+    @Override
+    public String getTextByUsername(String username) {
+        return userdao.getTextByUsername(username);
+    }
+
+    @Override
+    public int setTextUsername(String username, String text) {
+        return userdao.updateUser(username,text);
+    }
 }

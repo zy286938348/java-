@@ -48,4 +48,11 @@ public interface UserService {
 
     List<User> selectMenuByType(String type);
 
+    String getTextByUsername(String username);
+
+    int setTextUsername(String username,String text);
+
+
+
+
 }
