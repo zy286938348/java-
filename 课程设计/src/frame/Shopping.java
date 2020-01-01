@@ -5,7 +5,9 @@ import dao.daoImpl.ShoppingDaolmpl;
 import entity.Menus;
 import entity.User;
 import service.MenuService;
+import service.UserService;
 import service.serviceImpl.MenuServiceImpl;
+import service.serviceImpl.UserServiceImpl;
 import until.IconModel;
 import until.PictureUtil;
 
@@ -22,6 +24,7 @@ import java.util.List;
 public class Shopping extends JFrame {
     MenuService menuService = new MenuServiceImpl();
     ShoppingDao shoppingDao = new ShoppingDaolmpl();
+    UserService userService = new UserServiceImpl();
 
     private TableColumnModel tableColumnMode;
 
@@ -31,8 +34,8 @@ public class Shopping extends JFrame {
 
     public Shopping(User user , String username1) {
         setTitle("商家界面");
-        setSize(840,700);
-        setLocation(200,200);
+        setSize(1340,700);
+        setLocation(100,100);
         setResizable(false);
         init(username1,user);
         setVisible(true);
@@ -72,7 +75,7 @@ public class Shopping extends JFrame {
         j.setFont(new Font("黑体",Font.PLAIN,23));
 
         JScrollPane js = new JScrollPane(j);
-        js.setBounds(95,20,650,500);
+        js.setBounds(90,20,650,500);
 
         /**
          * 设置注册时间列的列宽
@@ -90,6 +93,15 @@ public class Shopping extends JFrame {
         j.getTableHeader().setReorderingAllowed(false);
         setLayout(null);
         add(js);
+
+        JLabel jLabel3 = new JLabel();
+        jLabel3.setText(userService.getTextByUsername(username1));
+
+        jLabel3.setBounds(800,50,200,100);
+        add(jLabel3);
+
+
+
 
         JButton jButton = new JButton("加入购物车");
         jButton.setFont(new Font("黑体",Font.PLAIN,25));
@@ -143,8 +155,6 @@ public class Shopping extends JFrame {
             @Override
             public void actionPerformed(ActionEvent actionEvent) {
                 new ShoppingCar(user);
-
-
             }
         });
     }

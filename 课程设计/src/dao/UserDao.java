@@ -10,7 +10,7 @@ public interface UserDao {
 
     Boolean selectUserByUsername(String username);
 
-    int updateUser(User user);
+    int updateUser(String username,String text);
 
     int insertUser(User user);
 
@@ -20,5 +20,5 @@ public interface UserDao {
 
     String getPassword(String username);
 
-//    List<User> getUserByType(String type);
+    String getTextByUsername(String username);
 }

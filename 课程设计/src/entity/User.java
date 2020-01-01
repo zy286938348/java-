@@ -11,6 +11,15 @@ public class User {
     private String sex;
     private String type;
     private String data;
+    private String text;
+
+    public String getText() {
+        return text;
+    }
+
+    public void setText(String text) {
+        this.text = text;
+    }
 
     public User(int id, String username, String name, String password, int age, String sex, String type) {
         this.id = id;
@@ -25,6 +34,12 @@ public class User {
     public User() {
 
     }
+
+    public User(String username, String text) {
+        this.username = username;
+        this.text = text;
+    }
+
     public User(int id, String username, String name, String sex, int age, String data) {
         this.id = id;
         this.username = username;

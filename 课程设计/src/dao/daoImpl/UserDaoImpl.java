@@ -73,19 +73,16 @@ public class UserDaoImpl implements UserDao {
     }
 
     /**
-     * 修改用户信息
-     * @param user
+     * 根据商家用户名更新报表信息
+     * @param username
+     * @param text
      * @return
      */
     @Override
-    public int updateUser(User user) {
+    public int updateUser(String username,String text) {
         Connection connection = JMysql.getConnection();
-        String sql = "UPDATE user SET password = ? , name = ? , sex = ? , age = ? WHERE username = ?";
-        PreparedStatement preparedStatement = JMysql.getPreparedStatement(connection,sql,user.getPassword(),
-                user.getName(),
-                user.getSex(),
-                user.getAge(),
-                user.getUsername());
+        String sql = "UPDATE user SET text = ? WHERE username = ?";
+        PreparedStatement preparedStatement = JMysql.getPreparedStatement(connection,sql,text,username);
         int flag = 0;
         try {
             flag = preparedStatement.executeUpdate();
@@ -208,5 +205,25 @@ public class UserDaoImpl implements UserDao {
             e.printStackTrace();
         }
         return password;
+    }
+
+    @Override
+    public String getTextByUsername(String username) {
+        Connection connection = JMysql.getConnection();
+        String sql = "SELECT * FROM user WHERE username = ?";
+        PreparedStatement preparedStatement = JMysql.getPreparedStatement(connection,sql,username);
+        ResultSet resultSet = null;
+        String text = null;
+        try {
+            resultSet = preparedStatement.executeQuery();
+            while(resultSet.next()){
+                text = resultSet.getString("text");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            JMysql.closeConnection(connection);
+        }
+        return text;
     }
 }
