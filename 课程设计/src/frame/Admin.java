@@ -11,6 +11,7 @@ import javax.swing.table.TableColumnModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class Admin extends JFrame {
@@ -22,9 +23,9 @@ public class Admin extends JFrame {
 
     JTable jTable , jTable2;
     JScrollPane jScrollPane, jScrollPane2;
-
+    LocalDateTime localDateTime = LocalDateTime.now();//获取时间
     public Admin(User u) {
-        setTitle("欢迎"+u.getName()+"管理员");
+        setTitle("欢迎    "+u.getName()+"管理员      登陆管理员界面                                                                                                                                                                                                    时间："+localDateTime.getHour()+":" +localDateTime.getMinute()+":"+localDateTime.getSecond());
         setSize(1730,900);
         setLocation(0,0);
         lable();

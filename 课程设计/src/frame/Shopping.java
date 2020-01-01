@@ -19,12 +19,15 @@ import javax.swing.table.TableColumnModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class Shopping extends JFrame {
     MenuService menuService = new MenuServiceImpl();
     ShoppingDao shoppingDao = new ShoppingDaolmpl();
     UserService userService = new UserServiceImpl();
+
+    LocalDateTime localDateTime = LocalDateTime.now();//获取时间
 
     private TableColumnModel tableColumnMode;
 
@@ -33,9 +36,9 @@ public class Shopping extends JFrame {
     private DefaultTableModel defaultTableModel = null;
 
     public Shopping(User user , String username1) {
-        setTitle("商家界面");
-        setSize(1340,700);
-        setLocation(100,100);
+        setTitle("欢迎    " +user.getName()+ "用户    登陆商家界面                                                                                           时间："+localDateTime.getHour()+":" +localDateTime.getMinute()+":"+localDateTime.getSecond());
+        setSize(840,750);
+        setLocation(200,30);
         setResizable(false);
         init(username1,user);
         setVisible(true);
@@ -75,7 +78,7 @@ public class Shopping extends JFrame {
         j.setFont(new Font("黑体",Font.PLAIN,23));
 
         JScrollPane js = new JScrollPane(j);
-        js.setBounds(90,20,650,500);
+        js.setBounds(90,70,650,500);
 
         /**
          * 设置注册时间列的列宽
@@ -96,8 +99,9 @@ public class Shopping extends JFrame {
 
         JLabel jLabel3 = new JLabel();
         jLabel3.setText(userService.getTextByUsername(username1));
-
-        jLabel3.setBounds(800,50,200,100);
+        jLabel3.setFont(new Font("黑体",Font.LAYOUT_NO_LIMIT_CONTEXT,30));
+        jLabel3.setForeground(Color.RED);
+        jLabel3.setBounds(100,10,500,40);
         add(jLabel3);
 
 
@@ -105,22 +109,22 @@ public class Shopping extends JFrame {
 
         JButton jButton = new JButton("加入购物车");
         jButton.setFont(new Font("黑体",Font.PLAIN,25));
-        jButton.setBounds(540,535,200,40);
+        jButton.setBounds(540,585,200,40);
         add(jButton);
 
         JButton jButton1 = new JButton("查看购物车");
         jButton1.setFont(new Font("黑体",Font.PLAIN,25));
-        jButton1.setBounds(540,605,200,40);
+        jButton1.setBounds(540,655,200,40);
         add(jButton1);
 
         JLabel jLabel = new JLabel("数量：");
         jLabel.setFont(new Font("黑体",Font.PLAIN,25));
-        jLabel.setBounds(100,550,100,40);
+        jLabel.setBounds(100,600,100,40);
         add(jLabel);
 
         JTextField jTextField = new JTextField();
         jTextField.setFont(new Font("黑体",Font.PLAIN,25));
-        jTextField.setBounds(200,550,150,40);
+        jTextField.setBounds(200,600,150,40);
         jTextField.setText("1");
         add(jTextField);
 

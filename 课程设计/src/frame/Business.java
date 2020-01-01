@@ -19,6 +19,7 @@ import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import java.time.LocalDateTime;
 import java.util.List;
 public class Business {
     UserService userService = new UserServiceImpl();
@@ -31,9 +32,11 @@ public class Business {
 
     DefaultTableModel defaultTableModel = null;
     public Business(User user,boolean b){
+        LocalDateTime localDateTime = LocalDateTime.now();//获取时间
         JFrame jf = new JFrame();
-        jf.setTitle("xx点餐平台  欢迎"+user.getName()+"商家进入        时间：");
+        jf.setTitle("xx点餐平台     欢迎   "+user.getName()+"商家    进入                                                                                                                                                                                                    时间："+localDateTime.getHour()+":" +localDateTime.getMinute()+":"+localDateTime.getSecond());
         jf.setSize(1300,600);
+        jf.setLocation(100,100);
         jf.setVisible(true);
 
         JPanel jp1 = new JPanel();
@@ -349,7 +352,7 @@ public class Business {
         tableColumn.setPreferredWidth(250);
         JLabel jLabel = new JLabel("今日总收入:");
         jLabel.setFont(new Font("黑体",Font.LAYOUT_NO_LIMIT_CONTEXT,25));
-        jLabel.setBounds(860,525,200,50);
+        jLabel.setBounds(900,520,200,50);
         double price1 = 0;
         double[]priceArray = new double[orderList.size()];
         for (int i = 0; i < orderList.size(); i++) {
@@ -358,14 +361,14 @@ public class Business {
         }
         JLabel jLabel1 = new JLabel(price1 + "");
         jLabel1.setFont(new Font("黑体",Font.LAYOUT_NO_LIMIT_CONTEXT,25));
-        jLabel1.setBounds(1000,525,100,50);
+        jLabel1.setBounds(1060,520,100,50);
         jPanel.add(jss);
         jPanel.add(jLabel);
         jPanel.add(jLabel1);
     }
 
     public void init3(JPanel jPanel,User user){
-        JLabel jLabel = new JLabel("请输入要发布的信息");
+        JLabel jLabel = new JLabel("请输入要发布的信息:");
 
         jLabel.setFont(new Font("黑体",Font.LAYOUT_NO_LIMIT_CONTEXT,25));
 
@@ -381,9 +384,9 @@ public class Business {
 
         JButton jButton = new JButton("发布");
 
-        jButton.setFont(new Font("黑体",Font.LAYOUT_RIGHT_TO_LEFT,20));
+        jButton.setFont(new Font("黑体",Font.LAYOUT_NO_LIMIT_CONTEXT,25));
 
-        jPanel.add(jButton).setBounds(1000,450,100,75);
+        jPanel.add(jButton).setBounds(1000,450,200,50);
 
         jPanel.add(jLabel);
         jPanel.add(jTextField1);

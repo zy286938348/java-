@@ -17,10 +17,12 @@ import javax.swing.table.TableColumnModel;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.time.LocalDateTime;
 import java.util.List;
 
 public class UserFrame extends JFrame {
     UserDao userDao = new UserDaoImpl();
+    LocalDateTime localDateTime = LocalDateTime.now();//获取时间
 
     private JTable ta = null;
     private JScrollPane pan = null;
@@ -30,7 +32,8 @@ public class UserFrame extends JFrame {
 
     private TableColumn tableColumn;
     public UserFrame(User user) {
-        setTitle("用户界面");
+
+        setTitle("欢迎    " +user.getName()+ "用户    登陆用户界面                                                                                           时间："+localDateTime.getHour()+":" +localDateTime.getMinute()+":"+localDateTime.getSecond());
         setSize(840,600);
         setLocation(200,200);
         setResizable(false);
