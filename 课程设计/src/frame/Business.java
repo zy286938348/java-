@@ -34,32 +34,23 @@ public class Business {
         jf.setVisible(true);
 
         JPanel jp1 = new JPanel();
-//        JPanel jp2 = new JPanel();
-//        JPanel jp3 = new JPanel();
-
-
-
-//        jf.setLayout(null);
-//        init(jp1,user,jf);
-//        init1(jp1,user);
 
         JButton button1 = new JButton("菜品管理");
         JButton button2 = new JButton("查看订单");
         JButton button3 = new JButton("查看报表");
-
+        JButton button4 = new JButton("发布信息");
 
 
         jf.add(button1).setBounds(20,30,150,100);
         jf.add(button2).setBounds(20,160,150,100);
         jf.add(button3).setBounds(20,290,150,100);
-
+        jf.add(button4).setBounds(20,420,150,100);
 
 
         button1.setFont(new Font("黑体",Font.PLAIN,25));
         button2.setFont(new Font("黑体",Font.PLAIN,25));
         button3.setFont(new Font("黑体",Font.PLAIN,25));
-
-
+        button4.setFont(new Font("黑体",Font.PLAIN,25));
 
 
 
@@ -104,6 +95,16 @@ public class Business {
             }
         });
 
+        button4.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                jp1.removeAll();
+                jp1.revalidate();//对panel1面板中的组件重新布局并绘制
+                jp1.repaint();
+                init3(jp1,user);
+                jp1.setVisible(true);
+            }
+        });
 
         jf.add(jp1);
 //        jf.add(jp2);
@@ -359,4 +360,37 @@ public class Business {
         jPanel.add(jLabel);
         jPanel.add(jLabel1);
     }
+
+    public void init3(JPanel jPanel,User user){
+        JLabel jLabel = new JLabel("请输入要发布的信息");
+
+        jLabel.setFont(new Font("黑体",Font.LAYOUT_NO_LIMIT_CONTEXT,25));
+
+        jLabel.setBounds(200,25,300,50);
+
+        JTextField jTextField1 = new JTextField();
+
+        jTextField1.setFont(new Font("黑体",Font.LAYOUT_NO_LIMIT_CONTEXT,35));
+
+        jTextField1.setBounds(200,100,900,300);
+        jTextField1.setHorizontalAlignment(JTextField.LEADING);
+
+        JButton jButton = new JButton("发布");
+
+        jButton.setFont(new Font("黑体",Font.LAYOUT_RIGHT_TO_LEFT,20));
+
+        jPanel.add(jButton).setBounds(1000,450,100,75);
+
+        jPanel.add(jLabel);
+        jPanel.add(jTextField1);
+        jButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                String str = jTextField1.getText();
+
+            }
+        });
+
+    }
 }
+
