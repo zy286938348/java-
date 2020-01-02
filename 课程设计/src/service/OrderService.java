@@ -6,10 +6,5 @@ public interface OrderService {
 
     int insertOrder(Order order);
 
-
-
-
-
-
-
+    int delete(int id);
 }

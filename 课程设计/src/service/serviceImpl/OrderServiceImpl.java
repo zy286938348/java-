@@ -11,4 +11,9 @@ public class OrderServiceImpl implements OrderService {
     public int insertOrder(Order order) {
         return orderDao.insertOrder(order);
     }
+
+    @Override
+    public int delete(int id) {
+        return orderDao.deleteOrder(id);
+    }
 }
