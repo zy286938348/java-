@@ -12,6 +12,8 @@ public interface UserDao {
 
     int updateUser(String username,String text);
 
+    int update(User user);
+
     int insertUser(User user);
 
     int deleteUserByUserName(String username);

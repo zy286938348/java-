@@ -23,9 +23,10 @@ public class Admin extends JFrame {
 
     JTable jTable , jTable2;
     JScrollPane jScrollPane, jScrollPane2;
-    LocalDateTime localDateTime = LocalDateTime.now();//获取时间
+
     public Admin(User u) {
-        setTitle("欢迎    "+u.getName()+"管理员      登陆管理员界面                                                                                                                                                                                                    时间："+localDateTime.getHour()+":" +localDateTime.getMinute()+":"+localDateTime.getSecond());
+        LocalDateTime localDateTime = LocalDateTime.now();
+        setTitle("欢迎"+u.getName()+"管理员"+"                                                                           时间："+localDateTime.getHour()+":" +localDateTime.getMinute()+":"+localDateTime.getSecond());
         setSize(1730,900);
         setLocation(0,0);
         lable();
@@ -95,6 +96,9 @@ public class Admin extends JFrame {
                 }
             }
         });
+
+
+
     }
 
     private void init1(User u) {
@@ -290,5 +294,17 @@ public class Admin extends JFrame {
         });
 
         add(jButton2);
+
+        ImageIcon icon = new ImageIcon("C:\\Users\\16524\\Desktop\\user1.png");
+        JButton jButton1 = new JButton(icon);
+        jButton1.setFont(new Font("黑体",Font.PLAIN,25));
+        jButton1.setBounds(1450,10,40,40);
+        add(jButton1);
+        jButton1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                new UserMsg(u);
+            }
+        });
     }
 }

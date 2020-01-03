@@ -13,6 +13,15 @@ public class User {
     private String data;
     private String text;
 
+    public User(String username, String name, String password, int age, String sex, String type) {
+        this.username = username;
+        this.name = name;
+        this.password = password;
+        this.age = age;
+        this.sex = sex;
+        this.type = type;
+    }
+
     public String getText() {
         return text;
     }

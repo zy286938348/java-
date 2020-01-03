@@ -32,11 +32,10 @@ public class Business {
 
     DefaultTableModel defaultTableModel = null;
     public Business(User user,boolean b){
-        LocalDateTime localDateTime = LocalDateTime.now();//获取时间
+        LocalDateTime localDateTime = LocalDateTime.now();
         JFrame jf = new JFrame();
-        jf.setTitle("xx点餐平台     欢迎   "+user.getName()+"商家    进入                                                                                                                                                                                                    时间："+localDateTime.getHour()+":" +localDateTime.getMinute()+":"+localDateTime.getSecond());
+        jf.setTitle("xx点餐平台  欢迎"+user.getName()+"商家进入                                                               时间  :"+localDateTime.getHour()+":" +localDateTime.getMinute()+":"+localDateTime.getSecond());
         jf.setSize(1300,600);
-        jf.setLocation(100,100);
         jf.setVisible(true);
 
         JPanel jp1 = new JPanel();
@@ -61,11 +60,18 @@ public class Business {
 
 
         jp1.setVisible(b);
-//        jp2.setVisible(b);
-//        jp3.setVisible(b);
 
-
-
+        ImageIcon icon = new ImageIcon("C:\\Users\\16524\\Desktop\\user1.png");
+        JButton jButton1 = new JButton(icon);
+        jButton1.setFont(new Font("黑体",Font.PLAIN,25));
+        jButton1.setBounds(1200,10,40,40);
+        jf.add(jButton1);
+        jButton1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                new UserMsg(user);
+            }
+        });
 
         button1.addActionListener(new ActionListener() {
             @Override
@@ -85,7 +91,7 @@ public class Business {
                 jp1.removeAll();
                 jp1.revalidate();//对panel1面板中的组件重新布局并绘制
                 jp1.repaint();
-                init1(jp1,user);
+                init1(jp1,user,jf);
                 jp1.setVisible(true);
             }
         });
@@ -113,8 +119,6 @@ public class Business {
         });
 
         jf.add(jp1);
-//        jf.add(jp2);
-//        jf.add(jp3);
     }
 
     private void init(JPanel jPanel,User user,JFrame jFrame){
@@ -249,7 +253,7 @@ public class Business {
         });
         jPanel.add(js);
     }
-    private void init1(JPanel jPanel,User user){
+    private void init1(JPanel jPanel,User user,JFrame jFrame){
         List<Order> orderList = orderDao.getMenusByUsername(user.getUsername());
         Object [][] Data = new Object[orderList.size()][7];
         Object [] DataTitle = {"ID","用户名","菜名","价格","数量","总价","下单时间"};
@@ -307,8 +311,55 @@ public class Business {
         /**
          * 设置了表头不可以被移动
          */
+        JButton jButton = new JButton("删除订单");
+        jButton.setFont(new Font("黑体",Font.PLAIN,25));
+        jPanel.add(jButton).setBounds(540,450,200,50);
+        jButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                int row = jj.getSelectedRow();
+                if (row == -1) {
+                    System.out.println("未选择中");
+                } else {
+                    int id = (Integer) jj.getValueAt(row, 0);
+                    int flag = orderDao.deleteOrder(id);
+                    jFrame.dispose();
+                    new Business(user, true);
+                    if (flag == 1) {
+                        System.out.println("删除成功");
+                    } else {
+                        System.out.println("删除失败");
+                    }
+                }
+            }
+        });
         jj.getTableHeader().setReorderingAllowed(false);
         jPanel.add(jss);
+
+//        JButton jButton = new JButton("删除订单");
+//        jButton.setFont(new Font("黑体",Font.PLAIN,25));
+//        jPanel.add(jButton).setBounds(540,450,200,50);
+//        jButton.addActionListener(new ActionListener() {
+//            @Override
+//            public void actionPerformed(ActionEvent actionEvent) {
+//                int row = jj.getSelectedRow();
+//                if (row == -1) {
+//                    System.out.println("未选择中");
+//                } else {
+//                    int id = (Integer) jj.getValueAt(row, 0);
+//                    int flag = orderDao.deleteOrder(id);
+//                    jFrame.dispose();
+//                    new Business(user, true);
+//                    if (flag == 1) {
+//                        System.out.println("删除成功");
+//                    } else {
+//                        System.out.println("删除失败");
+//                    }
+//                }
+//            }
+//        });
+
+
     }
     private void init2(JPanel jPanel,User user){
         List<Order> orderList = orderDao.getMenusByUsername(user.getUsername());
@@ -352,7 +403,7 @@ public class Business {
         tableColumn.setPreferredWidth(250);
         JLabel jLabel = new JLabel("今日总收入:");
         jLabel.setFont(new Font("黑体",Font.LAYOUT_NO_LIMIT_CONTEXT,25));
-        jLabel.setBounds(900,520,200,50);
+        jLabel.setBounds(860,525,200,50);
         double price1 = 0;
         double[]priceArray = new double[orderList.size()];
         for (int i = 0; i < orderList.size(); i++) {
@@ -361,14 +412,14 @@ public class Business {
         }
         JLabel jLabel1 = new JLabel(price1 + "");
         jLabel1.setFont(new Font("黑体",Font.LAYOUT_NO_LIMIT_CONTEXT,25));
-        jLabel1.setBounds(1060,520,100,50);
+        jLabel1.setBounds(1000,525,100,50);
         jPanel.add(jss);
         jPanel.add(jLabel);
         jPanel.add(jLabel1);
     }
 
     public void init3(JPanel jPanel,User user){
-        JLabel jLabel = new JLabel("请输入要发布的信息:");
+        JLabel jLabel = new JLabel("请输入要发布的信息");
 
         jLabel.setFont(new Font("黑体",Font.LAYOUT_NO_LIMIT_CONTEXT,25));
 
@@ -384,9 +435,9 @@ public class Business {
 
         JButton jButton = new JButton("发布");
 
-        jButton.setFont(new Font("黑体",Font.LAYOUT_NO_LIMIT_CONTEXT,25));
+        jButton.setFont(new Font("黑体",Font.LAYOUT_RIGHT_TO_LEFT,20));
 
-        jPanel.add(jButton).setBounds(1000,450,200,50);
+        jPanel.add(jButton).setBounds(1000,450,100,75);
 
         jPanel.add(jLabel);
         jPanel.add(jTextField1);

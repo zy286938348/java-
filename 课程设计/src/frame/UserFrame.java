@@ -106,9 +106,22 @@ public class UserFrame extends JFrame {
                 }
             }
         });
+
+        ImageIcon icon = new ImageIcon("C:\\Users\\16524\\Desktop\\user1.png");
+        JButton jButton1 = new JButton(icon);
+        jButton1.setFont(new Font("黑体",Font.PLAIN,25));
+        jButton1.setBounds(780,10,40,40);
+        add(jButton1);
+        jButton1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent actionEvent) {
+                new UserMsg(user);
+            }
+        });
     }
 
-//    public static void main(String[] args) {
-//        new UserFrame();
-//    }
+    public static void main(String[] args) {
+        new UserFrame(new User());
+    }
+
 }

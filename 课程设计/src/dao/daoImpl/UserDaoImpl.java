@@ -101,6 +101,29 @@ public class UserDaoImpl implements UserDao {
         return flag;
     }
 
+    @Override
+    public int update(User user) {
+        Connection connection = JMysql.getConnection();
+        String sql = "UPDATE user SET name = ?, age = ?, sex = ?, password = ? WHERE username = ?";
+        PreparedStatement preparedStatement = JMysql.getPreparedStatement(connection,sql,user.getName(),user.getAge(),user.getSex(),user.getPassword(),user.getUsername());
+        int flag = 0;
+        try {
+            flag = preparedStatement.executeUpdate();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            JMysql.closeConnection(connection);
+            if (preparedStatement != null){
+                try {
+                    preparedStatement.close();
+                } catch (SQLException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+        return flag;
+    }
+
     /**
      * 增加用户
      * 实现注册功能
